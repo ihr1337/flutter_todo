@@ -13,7 +13,7 @@ class ToDo {
     return [
       ToDo(id: 1, todoText: 'Morning excercise', isDone: true),
       ToDo(id: 2, todoText: 'Breakfast', isDone: true),
-      ToDo(id: 3, todoText: 'Cleaning room', isDone: false),
+      ToDo(id: 3, todoText: 'Cleaning room'),
       ToDo(id: 4, todoText: 'Wash dishes', isDone: false),
     ];
   }

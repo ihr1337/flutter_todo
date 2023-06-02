@@ -4,9 +4,16 @@ import 'package:flutter_todo/constants/colors.dart';
 import '../model/todo.dart';
 
 class ToDoItem extends StatelessWidget {
-  const ToDoItem({super.key, required this.todo});
+  const ToDoItem({
+    super.key,
+    required this.todo,
+    this.onToDoChanged,
+    this.onDeleteItem,
+  });
 
   final ToDo todo;
+  final onToDoChanged;
+  final onDeleteItem;
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +24,20 @@ class ToDoItem extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         tileColor: Colors.white,
         leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.check_box),
+          onPressed: () {
+            onToDoChanged(todo);
+          },
+          icon: todo.isDone
+              ? const Icon(Icons.check_box)
+              : const Icon(Icons.check_box_outline_blank),
           color: tdBlue,
         ),
         title: Text(
           todo.todoText!,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             color: tdBlack,
-            decoration: TextDecoration.lineThrough,
+            decoration: todo.isDone ? TextDecoration.lineThrough : null,
           ),
         ),
         trailing: Container(
