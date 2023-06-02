@@ -16,19 +16,15 @@ class _HomeState extends State<Home> {
 
   final todosList = ToDo.todoList();
 
-  bool _validate = false;
-
   final _todoController = TextEditingController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _findToDo = todosList;
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _todoController;
   }
