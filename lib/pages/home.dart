@@ -41,6 +41,7 @@ class _HomeState extends State<Home> {
                         ToDoItem(
                           todo: todo,
                           onToDoChanged: _handleToDoChange,
+                          onDeleteItem: _deleteToDoItem,
                         ),
                     ],
                   ),
@@ -107,27 +108,33 @@ class _HomeState extends State<Home> {
     });
   }
 
-  AppBar _buildAppBar() {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: tdBGColor,
-      title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        const Icon(
-          Icons.menu,
-          color: tdBlack,
-          size: 30,
-        ),
-        SizedBox(
-          height: 50,
-          width: 50,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset('assets/images/Mike-OHearn_2.png'),
-          ),
-        )
-      ]),
-    );
+  void _deleteToDoItem(id) {
+    setState(() {
+      todosList.removeWhere((item) => item.id == id);
+    });
   }
+}
+
+AppBar _buildAppBar() {
+  return AppBar(
+    elevation: 0,
+    backgroundColor: tdBGColor,
+    title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      const Icon(
+        Icons.menu,
+        color: tdBlack,
+        size: 30,
+      ),
+      SizedBox(
+        height: 50,
+        width: 50,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset('assets/images/Mike-OHearn_2.png'),
+        ),
+      )
+    ]),
+  );
 }
 
 searchBox() {
